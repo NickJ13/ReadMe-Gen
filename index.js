@@ -1,19 +1,9 @@
 //TODO:  Include packages needed for this application
-const generateMarkdown = require('/utls/generateMarkdown')
+const generateMarkdown = require('/utils/generateMarkdown')
 const fs = require('fs')
 const inquirer = require('inquerer')
 
-//todo: Create an array of questions for the user input]
-const questions = [
-    'What is your GitHub username?',
-    'What is your email?',
-    'What is the name of your project',
-    'What is the description of your project?',
-    'Which license would you like to choose?',
-    'What instructions should be added for installation?',
-    'How should this porject be used?',
-    'How should users contribute to the project if they would like to?'
-];
+//todo: Create an array of questions for the user input
 
 //todo: function to write a README file
 function writeToFile(data) {
@@ -25,43 +15,43 @@ function init() {
     inquirer.prompt([
         {
             type: 'input',
-            message: questions[0],
+            message: 'What is your GitHub username?',
             name: 'github'
         },
         {
             type: 'input',
-            message: questions[1],
+            message: 'What is your email?',
             name: 'email'
         },
         {
             type: 'input',
-            message: questions[2],
+            message: 'What is the name of your project',
             name: 'title'
         },
         {
             type: 'input',
-            message: questions[3],
+            message: 'What is the description of your project?',
             name: 'description'
         },
         {
             type: 'list',
-            message: questions[4],
+            message: 'Which license would you like to choose?',
             choices: ['MIT', 'Apache 2.0', 'GNU GPL v2', 'none'],
             name: 'license'
         },
         {
             type: 'input',
-            message: questions[5],
+            message: 'What instructions should be added for installation?',
             name: 'installation'
         },
         {
             type: 'input',
-            message: questions[6],
+            message: 'How should this porject be used?',
             name: 'usage'
         },
         {
             type: 'input',
-            message: questions[7],
+            message: 'How should users contribute to the project if they would like to?',
             name: 'guidelines'
         },
     ]).then((data) => writeToFile(data))
